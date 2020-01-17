@@ -58,6 +58,22 @@ public class ConnectToSqlDB {
         return data;
     }
 
+    public List<String> readDataBase1(String tableName, String columnName1, String columnName2)throws Exception{
+        List<String> data = new ArrayList<String>();
+
+        try {
+            connectToSqlDatabase();
+            statement = connect.createStatement();
+            resultSet = statement.executeQuery("select * from " + tableName);
+            data = getResultSetData(resultSet, columnName1, columnName2);
+        } catch (ClassNotFoundException e) {
+            throw e;
+        }finally{
+            close();
+        }
+        return data;
+    }
+
     private void close() {
         try{
             if(resultSet != null){
@@ -83,6 +99,8 @@ public class ConnectToSqlDB {
         return dataList;
     }
 
+
+
     public void insertDataFromArrayToSqlTable(int [] ArrayData, String tableName, String columnName)
     {
         try {
@@ -106,7 +124,7 @@ public class ConnectToSqlDB {
         }
     }
 
-    public void insertDataFromStringToSqlTable(String ArrayData, String tableName, String columnName)
+    public void insertDataFromStringToSqlTable(int [] ArrayData, String tableName, String columnName)
     {
         try {
             connectToSqlDatabase();
