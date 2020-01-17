@@ -3,7 +3,6 @@ package math.problems;
 public class MakePyramid {
     public static void main(String[] args) {
 
-        int n = 6;
 
 
 
@@ -17,7 +16,16 @@ public class MakePyramid {
                          * * * * * *
 
         */
-
+        int level = 35;
+        for(int i=0; i<level; i++) {
+            for (int j = 0; j < level - i; j++) {
+                System.out.print(" ");
+            }
+            for (int k = 0; k <= i; k++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
 
         }
   }
